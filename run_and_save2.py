@@ -67,9 +67,9 @@ cv2.putText(dummy_webcam, 'Webcam Not Available', (100, 240), cv2.FONT_HERSHEY_S
 cv2.imwrite(get_out(7), dummy_webcam)
 
 # 8
-smaller = cv2.resize(img, (0,0), fx=0.5, fy=0.5)
+smaller = cv2.resize(img, (0,0), fx=0.1, fy=0.1)
 bigger = cv2.resize(img, (0,0), fx=3.0, fy=3.0)
-cv2.imwrite(get_out(8), bigger) # Just save one for the preview
+cv2.imwrite(get_out(8), smaller) # Just save one for the preview
 
 # 9
 (h, w) = img.shape[:2]
@@ -110,7 +110,7 @@ if ret:
 
 # 14
 src_pts = np.float32([[0,0], [w,0], [0,h], [w,h]])
-dst_pts = np.float32([[50,50], [w-50, 0], [0, h-50], [w-50, h-50]])
+dst_pts = np.float32([[150,150], [w-150, 0], [0, h-150], [w-150, h-150]])
 H, status = cv2.findHomography(src_pts, dst_pts)
 homography_img = cv2.warpPerspective(img, H, (w, h))
 cv2.imwrite(get_out(14), homography_img)
