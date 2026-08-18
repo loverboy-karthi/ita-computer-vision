@@ -68,7 +68,8 @@ cv2.imwrite(get_out(7), dummy_webcam)
 
 # 8
 smaller = cv2.resize(img, (0,0), fx=0.5, fy=0.5)
-cv2.imwrite(get_out(8), smaller) # Just save one for the preview
+bigger = cv2.resize(img, (0,0), fx=3.0, fy=3.0)
+cv2.imwrite(get_out(8), bigger) # Just save one for the preview
 
 # 9
 (h, w) = img.shape[:2]
@@ -78,7 +79,7 @@ rotated_cw = cv2.warpAffine(img, M_cw, (w, h))
 cv2.imwrite(get_out(9), rotated_cw)
 
 # 10
-M_translate = np.float32([[1, 0, 50], [0, 1, 100]])
+M_translate = np.float32([[1, 0, 150], [0, 1, 250]])
 translated = cv2.warpAffine(img, M_translate, (w, h))
 cv2.imwrite(get_out(10), translated)
 
