@@ -165,8 +165,8 @@ sharp_pos = cv2.filter2D(gray, -1, kernel_pos)
 cv2.imwrite(get_out(22), sharp_pos)
 
 # 23
-gaussian_blur = cv2.GaussianBlur(img, (9,9), 10.0)
-unsharp_img = cv2.addWeighted(img, 1.5, gaussian_blur, -0.5, 0)
+gaussian_blur = cv2.GaussianBlur(img, (15,15), 20.0)
+unsharp_img = cv2.addWeighted(img, 2.5, gaussian_blur, -1.5, 0)
 cv2.imwrite(get_out(23), unsharp_img)
 
 # 24
