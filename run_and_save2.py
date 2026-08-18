@@ -61,10 +61,14 @@ if ret:
     cv2.imwrite(get_out(6), gray_frame)
 cap.release()
 
-# 7 WebCam - Dummy
-dummy_webcam = np.zeros((480, 640, 3), dtype=np.uint8)
-cv2.putText(dummy_webcam, 'Webcam Not Available', (100, 240), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2)
-cv2.imwrite(get_out(7), dummy_webcam)
+# 7 WebCam - Using user uploaded photo
+user_photo = cv2.imread('/home/chakradhar/.gemini/antigravity-ide/brain/0e089800-7e5d-4542-9630-b9fe125f9c75/media__1787062663404.jpg')
+if user_photo is not None:
+    cv2.imwrite(get_out(7), user_photo)
+else:
+    dummy_webcam = np.zeros((480, 640, 3), dtype=np.uint8)
+    cv2.putText(dummy_webcam, 'Webcam Not Available', (100, 240), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2)
+    cv2.imwrite(get_out(7), dummy_webcam)
 
 # 8
 smaller = cv2.resize(img, (0,0), fx=0.1, fy=0.1)
